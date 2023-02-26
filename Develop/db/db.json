@@ -1,32 +1,22 @@
 [
     {
-        "title": "4",
-        "text": "4",
-        "id": "9020"
+        "title": "My first note in the books!",
+        "text": "Look at it... it's right there!!",
+        "id": "a6df"
     },
     {
-        "title": "6",
-        "text": "6",
-        "id": "e722"
+        "title": "I think I need more notes",
+        "text": "write them now!",
+        "id": "cac0"
     },
     {
-        "title": "7",
-        "text": "7",
-        "id": "d280"
+        "title": "Call mom",
+        "text": "after work",
+        "id": "05a2"
     },
     {
-        "title": "1",
-        "text": "1",
-        "id": "24e7"
-    },
-    {
-        "title": "3333",
-        "text": "3",
-        "id": "413d"
-    },
-    {
-        "title": "New note",
-        "text": "testing",
-        "id": "d7f6"
+        "title": "Buy a better keyboard",
+        "text": "i mean, its still pretty good - I'm okay for now I think",
+        "id": "d951"
     }
 ]
