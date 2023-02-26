@@ -5,7 +5,7 @@ const db = require('./Develop/db/db.json');
 const { readFromFile, readAndAppend, deleteFromFile } = require('./helpers/fsUtils');
 const uuid = require('./helpers/uuid')
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.static(__dirname + '/Develop/public'));
