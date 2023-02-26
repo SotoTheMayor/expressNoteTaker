@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path')
 const fs = require('fs');
 const db = require('./Develop/db/db.json');
-const { readFromFile, readAndAppend } = require('./helpers/fsUtils');
+const { readFromFile, readAndAppend, deleteFromFile } = require('./helpers/fsUtils');
 const uuid = require('./helpers/uuid')
 
 const PORT = 3001;
@@ -12,9 +12,6 @@ app.use(express.static(__dirname + '/Develop/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Develop/public/index.html'))
-})
 
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, 'Develop/public/notes.html')) 
@@ -25,29 +22,28 @@ app.get('/api/notes', (req, res) => {
 })
 
 app.post('/api/notes', (req, res) => {
-    console.log(req.body);
     const { title, text } = req.body;
-
     const newNote = {
         title,
         text,
-        uniqueId: uuid()
+        id: uuid()
     }
-
     readAndAppend(newNote, `./Develop/db/db.json`)
-
-    // fs.writeFile(`./Develop/db/db.json`, JSON.stringify(newNote, null, `\t`), (err) =>
-    // err ? console.error(err) : console.log(`Review for ${newNote.title} has been written to file`)
-    // )
-
     const response = {
         status: "Success",
         body: newNote
     }
-
     res.status(201).json(response)
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+    deleteFromFile(req.params.id, `./Develop/db/db.json`)
+    res.sendFile(path.join(__dirname, 'Develop/public/notes.html')) 
+})
+
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Develop/public/index.html'))
+})
 
 app.listen(PORT, () => 
     console.log(`Listening at http://localhost:${PORT}`)
