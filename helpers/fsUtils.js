@@ -3,10 +3,12 @@ const util = require('util');
 
 const readFromFile = util.promisify(fs.readFile);
 
+//used when rewriting db.json both for adding and removing notes
 const writeToFile = (destination, content) =>
     fs.writeFile(destination, JSON.stringify(content, null, 4), (err) =>
     err ? console.error(err) : console.info(`Note list updated`));
 
+//function connected to server.js that appends new notes to existing db.json
 const readAndAppend = (content, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
         if (err) {
@@ -19,6 +21,7 @@ const readAndAppend = (content, file) => {
     })
 }
 
+//function used in server.js to delete a note
 const deleteFromFile = (id, file) => {
     fs.readFile(file, 'utf8', (err, data) => {
         if (err) {
