@@ -22,6 +22,9 @@ There are no additional installation structions.  Visit the live heroku url and 
 ## Usage
 The project is used to draft notes with a title and a description, assigns them a unique id so they can be recalled and deleted as needed too.  Given it is deployed, and connected to a backend JSON file, the data you save will be persistent.
 
+![image of homepage](./Assets/final%20homepage.png)
+
+![image of homepage](./Assets/final%20notes.png)
 
 ## License
 
